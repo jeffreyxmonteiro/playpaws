@@ -10,9 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_02_25_075928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "dogs", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "owner_id"
+    t.string "breed"
+    t.string "images_url", default: [], array: true
+    t.string "available_dates", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_dogs_on_owner_id"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.string "username"
+    t.string "avatar_url"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "description"
+    t.string "location"
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "playdates", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "dog_id"
+    t.string "date"
+    t.string "payment"
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_playdates_on_dog_id"
+    t.index ["user_id"], name: "index_playdates_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "avatar_url"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "description"
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "dogs", "owners"
+  add_foreign_key "playdates", "dogs"
+  add_foreign_key "playdates", "users"
 end
