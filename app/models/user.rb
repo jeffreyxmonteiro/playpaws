@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  has_many :playdates
+  has_many :playdates, dependent: :destroy
 end
