@@ -1,0 +1,10 @@
+Dog Edit Page
+
+<%= simple_form_for [@dog] do |f|%>
+<%= f.input :name %>
+<%= f.input :description %>
+<%= f.input :breed %>
+<%= f.input :images_url %>
+<%= f.input :available_dates %>
+<%= f.submit %>
+<% end %>
