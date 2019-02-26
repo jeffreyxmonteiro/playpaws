@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :owners, only: [:show] do
     resources :dogs, only: [:new, :create]
   end
+  resource :profile, [:show, :edit, :update]
 end
