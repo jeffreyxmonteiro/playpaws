@@ -8,11 +8,14 @@ class DogsController < ApplicationController
   end
 
   def new
+    @owner = Owner.find(params[:owner_id])
     @dog = Dog.new
   end
 
   def create
+    @owner = Owner.find(params[:owner_id])
     @dog = Dog.new(dog_params)
+    @dog.owner = @owner
     if @dog.save
       redirect_to dog_path(@dog)
     else
