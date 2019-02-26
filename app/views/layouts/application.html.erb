@@ -10,6 +10,42 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+    <div class=“navbar”>
+         <!-- Logo -->
+         <a href=“/” class=“navbar-brand”>
+           <%#= image_tag “logo.png”, alt: “PlayPaws” %>
+         </a>
+         <!-- Right Navigation -->
+         <div class=“navbar-right hidden-xs hidden-sm”>
+           <a href=“” class=“navbar-item navbar-link”>Messages</a>
+           <a href=“#” class=“navbar-btn btn-medium”>Browse</a>
+           <!-- Profile picture with dropdown list -->
+           <div class=“navbar-item”>
+             <div class=“dropdown”>
+               <img src=“https://kitt.lewagon.com/placeholder/users/ssaunier
+    https://kitt.lewagon.com/placeholder/users/ssaunier
+    ” class=“avatar dropdown-toggle” id=“navbar-menu” data-toggle=“dropdown”>
+               <ul class=“dropdown-menu dropdown-menu-right navbar-dropdown-menu”>
+                 <li><a href=“#”>Profile</a></li>
+                 <li><a href=“#”>Dashboard</a></li>
+                 <li><a href=“#”>Log Out</a></li>
+               </ul>
+             </div>
+           </div>
+         </div>
+         <!-- Dropdown appearing on mobile only -->
+         <div class=“navbar-item hidden-md hidden-lg”>
+           <div class=“dropdown”>
+             <i class=“fas fa-bars dropdown-toggle” data-toggle=“dropdown” role=“button”></i>
+             <ul class=“dropdown-menu dropdown-menu-right navbar-dropdown-menu”>
+               <li><a href=“#”>Host</a></li>
+               <li><a href=“#”>Trips</a></li>
+               <li><a href=“#”>Messagese</a></li>
+             </ul>
+           </div>
+         </div>
+       </div>
+
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
