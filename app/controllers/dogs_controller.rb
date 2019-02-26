@@ -1,14 +1,17 @@
 class DogsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_dog, only: [:show, :edit, :update, :delete]
 
   def index
     # @dogs = Dog.all
     @dogs = policy_scope(Dog)
+    skip_authorization
   end
 
   def show
     @dog = Dog.find(params[:id])
      # DogPolicy.new(current_user, @dog).show?
+    skip_authorization
   end
 
   def create
