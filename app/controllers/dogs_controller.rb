@@ -10,7 +10,6 @@ class DogsController < ApplicationController
 
   def show
     @dog = Dog.find(params[:id])
-     # DogPolicy.new(current_user, @dog).show?
     skip_authorization
   end
 
