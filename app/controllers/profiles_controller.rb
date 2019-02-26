@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  skip_after_action :verify_authorized
+
   def show
     @current_user = current_user
     @dogs = current_user.dogs if current_user.class == Owner
