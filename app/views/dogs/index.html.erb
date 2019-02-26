@@ -1,4 +1,19 @@
-<h1>Index Page</h1>
-<% @dogs.first(10).each do |dog| %>
-  <%= link_to dog.name, dog_path(dog) %>
-<% end %>
+<div class="dog-container">
+  <div class="dog-row">
+    <% @dogs.first(9).each do |dog| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <div class="dog-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= dog.images_url[0] %>);"></div>
+          <div class="dog-breed">
+            <h6><%= dog.breed %></h6>
+          </div>
+          <div class="dog-description">
+            <h2><%= dog.name %></h2>
+            <h6> Placeholder text: owner rating </h6>
+          </div>
+           <%= link_to "", dog_path(dog), class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
