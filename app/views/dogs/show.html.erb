@@ -1,24 +1,53 @@
 <div class="container">
 <!--   <div class="row">
- --><div class="col-md-8 dog-col">
-      <div class="center rounded-border">
-        <%= image_tag @dog.images_url[0], alt: @dog.name, width: 500 %>
+ --><div class="col-lg-8 dog-col">
+      <div class="center" id="rounded-border">
+        <%= image_tag @dog.images_url[0], alt: @dog.name, width: 600 %>
       </div>
       <div class="left">
-        <h2><%= @dog.name %></h2>
-        <p><%= @dog.breed %></p>
+        <h2 class="less-margin"><%= @dog.name %></h2>
+        <p class="less-margin"><%= @dog.breed %></p>
         <p><%= @dog.description %></p>
       </div>
-      <%= link_to "BOOK", dogs_path %> <!-- please edit this path -->
+      <div class="dog-btn">
+        <%= link_to "BOOK", dogs_path %> <!-- please edit this path -->
+      </div>
     </div>
 
-    <div class="col-md-4 owner-col">
-      <p class="center"><%= @dog.name %>'s Owner</p>
+    <div class="col-lg-4 owner-col">
+      <p class="center dogs-owner"><%= @dog.name %>'s Owner</p>
       <div class="center-cropped center"
      style="background-image: url(<%= @dog.owner.avatar_url %>);"></div>
-      <h2><%= @dog.owner.first_name %></h2>
+      <h2 class="owner-name"><%= @dog.owner.first_name %></h2>
       <p class="rating">owner rating: 4.5</p> <!-- placeholder, please add ratings to the db -->
       <p><%= @dog.owner.description %></p>
+
+      <div>
+        <% @dog.owner.dogs.each do |dog| %>
+        <div class="cards">
+          <div id="rounded-border">
+            <%= image_tag dog.images_url[0], alt: dog.name, width: 100 %>
+          </div>
+          <div class="card-content">
+            <p><%= dog.name %></p>
+            <p class="card-description"><%= dog.description %></p>
+          </div>
+         <!--  <div>
+            <p><%= dog.breed %></p>
+          </div> -->
+            </div>
+        <% end %>
+
+      </div>
+
+<!-- >>  @dog.owner.dogs[0].name
+=> "Harley"
+>>  @dog.owner.dogs[0].description
+=> "medium Male senior, woof woof"
+>>  @dog.owner.dogs[0].breed
+=> "Chihuahua"
+@dog.owner.dogs[0].images_url -->
+
     </div>
 <!--   </div> -->
 </div>
