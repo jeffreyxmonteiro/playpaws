@@ -1,6 +1,6 @@
-Dog Create Page !!Still need to do embedding
+Dog Create Page
 
-<%= simple_form_for @dog do |f|%>
+<%= simple_form_for [@owner, @dog] do |f|%>
 <%= f.input :name %>
 <%= f.input :description %>
 <%= f.input :breed %>
