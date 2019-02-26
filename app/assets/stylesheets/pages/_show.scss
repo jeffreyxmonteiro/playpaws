@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 800px;
+  margin: 20px 20px;
+}
+.center-cropped {
+  width: 100px;
+  height: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  background-size: 100px;
+}
+.dog-col {
+  border-radius: 5px;
+  text-align: center;
+  height: 800px;
+  box-shadow: 2px 2px 2px #666666;
+  width: 500px;
+  padding: 0px;
+}
+.owner-col {
+  border-radius: 5px;
+  border: 1px solid #B19267;
+  text-align: center;
+  height: 800px;
+}
+
+.rating {
+  font-size: 11px;
+}
+
+.center {
+  margin: auto;
+}
+.rounded-border {
+  border-radius: 5px;
+}
+.left {
+  text-align: left;
+  padding: 20px;
+}

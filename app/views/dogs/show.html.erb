@@ -1,4 +1,25 @@
-<h1>Show Page</h1>
-<p><%= @dog.name %></p>
-<p><%= @dog.description %></p>
-<%= link_to 'Home', dogs_path %>
+<div class="container">
+<!--   <div class="row">
+ --><div class="col-md-8 dog-col">
+      <div class="center rounded-border">
+        <%= image_tag @dog.images_url[0], alt: @dog.name, width: 500 %>
+      </div>
+      <div class="left">
+        <h2><%= @dog.name %></h2>
+        <p><%= @dog.breed %></p>
+        <p><%= @dog.description %></p>
+      </div>
+      <%= link_to "BOOK", dogs_path %> <!-- please edit this path -->
+    </div>
+
+    <div class="col-md-4 owner-col">
+      <p class="center"><%= @dog.name %>'s Owner</p>
+      <div class="center-cropped center"
+     style="background-image: url(<%= @dog.owner.avatar_url %>);"></div>
+      <h2><%= @dog.owner.first_name %></h2>
+      <p class="rating">owner rating: 4.5</p> <!-- placeholder, please add ratings to the db -->
+      <p><%= @dog.owner.description %></p>
+    </div>
+<!--   </div> -->
+</div>
+
