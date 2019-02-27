@@ -4,7 +4,7 @@
   height: 800px;
   margin: 0px 0px;
   width: 100vw;
-  padding-top: 20px;
+  padding: 20px 220px 0px 220px;
 }
 
 .playdate-cards {
@@ -127,4 +127,11 @@ p {
 
 .playdate-rules {
   margin-bottom: 20px;
+}
+.playdate-rules h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+li {
+  font-size: 14px;
 }
