@@ -1,4 +1,4 @@
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(http://i.imgur.com/SHfD9qZ.jpg)">
+2<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(http://i.imgur.com/SHfD9qZ.jpg)">
   <img class="avatar-large" alt="avatar-large" src=<%= @current_user.avatar_url %> />
   <h1><%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
   <% if current_user.class == "Owner" %>
@@ -11,7 +11,7 @@
 </div>
 
 
-<% if current_user.class == "Owner" %>
+<% if current_owner %>
     <div class="container-dogs-reviews">
 
       <div class="item">
@@ -51,6 +51,51 @@
 
     </div>
   <% end %>
+
+  <% if current_user %>
+    <div class="container-dogs-reviews">
+
+      <div class="item">
+        <h3>Next Appointment</h3>
+
+        <% current_user.playdates.each do |playdate|  %>
+          <div class="card-product">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
+            <div class="card-product-infos">
+              <h2> <%= playdate.date %> </h2>
+              <p>Product description with <strong>relevant info</strong> only.</p>
+            </div>
+          </div>
+        <% end  %>
+      </div>
+
+      <div class="item">
+        <h3>Reviews</h3>
+        <div class="notification">
+          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
+          <div class="notification-content">
+            <p><small>Bob Simmons</small></p>
+            <p>Da dogs were <strong>top notch!</strong> Highly recommend!</p>
+          </div>
+
+
+        </div>
+
+        <div class="notification">
+          <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
+          <div class="notification-content">
+            <p><small>David Younibrow</small></p>
+            <p>I was so depressed with my accounting job. But now I see the <strong>light</strong> thanks to this puppy.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+
+
 
 
 
