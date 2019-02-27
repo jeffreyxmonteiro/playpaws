@@ -21,12 +21,14 @@ class PlaydatesController < ApplicationController
     @playdate = Playdate.new(playdate_params)
     @playdate.user = current_user
     @playdate.dog = @dog
+    authorize(@playdate)
     if @playdate.save
-      redirect_to playdate_path(@playdate)
+      # remove available dates, move this to confirmation page when complete
+      @dog.available_dates.delete(@playdate.date)
+      redirect_to profile_user_path
     else
       render :new
     end
-    skip_authorization
   end
 
   private
