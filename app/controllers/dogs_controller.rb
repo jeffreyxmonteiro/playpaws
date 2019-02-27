@@ -13,10 +13,6 @@ class DogsController < ApplicationController
     skip_authorization
   end
 
-  def create
-    authorize(@dog)
-  end
-
   def new
     @owner = Owner.find(params[:owner_id])
     @dog = Dog.new
@@ -26,6 +22,7 @@ class DogsController < ApplicationController
     @owner = Owner.find(params[:owner_id])
     @dog = Dog.new(dog_params)
     @dog.owner = @owner
+    authorize(@dog)
     if @dog.save
       redirect_to dog_path(@dog)
     else
