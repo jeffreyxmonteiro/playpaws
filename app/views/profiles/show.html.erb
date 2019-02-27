@@ -1,1 +1,52 @@
-<h1>Profile Page</h1>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(http://i.imgur.com/SHfD9qZ.jpg)">
+  <img class="avatar-large" alt="avatar-large" src=<%= @current_user.avatar_url %> />
+  <h1><%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
+  <h3>Location</h3>
+  <p><%= @current_user.description %></p>
+</div>
+
+<%  %>
+<div class="container-dogs-reviews">
+
+  <div class="item">
+    <h3>Dogs</h3>
+    <div class="card-product">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
+      <div class="card-product-infos">
+        <h2>Product name</h2>
+        <p>Product description with <strong>relevant info</strong> only.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <h3>Reviews</h3>
+    <div class="notification">
+      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
+      <div class="notification-content">
+        <p><small>14th January</small></p>
+        <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
+      </div>
+
+      <div class="notification-actions">
+        <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+        <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+      </div>
+    </div>
+
+    <div class="notification">
+      <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
+      <div class="notification-content">
+        <p><small>9th January</small></p>
+        <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
+      </div>
+
+      <div class="notification-actions">
+        <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+        <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
