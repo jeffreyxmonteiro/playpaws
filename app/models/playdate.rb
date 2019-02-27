@@ -4,5 +4,5 @@ class Playdate < ApplicationRecord
 
   validates :date, presence: true
   validates :payment, presence: true, inclusion: { in: ["cash", "credit"] }
-  validates :completed, presence: true, inclusion: { in: [true, false] }
+  validates :completed, inclusion: { in: [true, false] }
 end
