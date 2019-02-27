@@ -1,5 +1,5 @@
 <div class="playdate-container">
-  <div>
+  <div class="left-side">
     <div class="playdate-col-lg-8 playdate-dog-col">
       <div class="playdate-center" id="playdate-rounded-border">
         <%= image_tag @dog.images_url[0], alt: @dog.name, width: 400 %>
@@ -22,14 +22,17 @@
     </div>
   </div>
 
-  <div class="playdate-col-lg-4 playdate-form-col">
-    <%= simple_form_for [@dog, @playdate] do |f|%>
-    <%= f.input :date, as: :select, collection: @dog.available_dates, prompt: 'Select Date' %>
-    <%= f.input :payment, as: :select, collection: ['cash', 'credit card'] ,prompt: 'Select Payment Method' %>
-    <div>
-      <%= link_to f.submit, profile_user_path %>
+
+  <div class="right-side">
+    <div class="playdate-col-lg-4 playdate-form-col">
+      <%= simple_form_for [@dog, @playdate] do |f|%>
+      <%= f.input :date, as: :select, collection: @dog.available_dates, prompt: 'Select Date' %>
+      <%= f.input :payment, as: :select, collection: ['cash', 'credit card'] ,prompt: 'Select Payment Method' %>
+      <div>
+        <%= link_to f.submit, profile_user_path %>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
 
