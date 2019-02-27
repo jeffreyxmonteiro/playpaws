@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :owners, only: [:show] do
     resources :dogs, only: [:new, :create]
   end
-  resource :profile, only: [:show, :edit, :update]
+  resource :profile, only: [:edit, :update]
+  get 'profile', to: 'profiles#show', as: :profile_user
   resources :playdates, only: [:index, :show]
 end

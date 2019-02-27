@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   skip_after_action :verify_authorized
+  skip_before_action :authenticate_user!, only: [:show]
 
   def show
     @current_user = current_user

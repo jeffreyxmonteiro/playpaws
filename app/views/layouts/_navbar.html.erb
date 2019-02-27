@@ -13,14 +13,14 @@
         <div class="dropdown">
           <!-- <img src="https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="avatar dropdown-toggle" id="navbar-menu" data-toggle="dropdown"> -->
           <div class="avatar dropdown-toggle" id="navbar-menu" data-toggle="dropdown">
-            <%= image_tag(current_user.avatar_url) if user_signed_in? %>
+            <%#= image_tag(current_user.avatar_url) if user_signed_in? %>
             <%= image_tag(current_owner.avatar_url) if owner_signed_in? %>
           </div>
           <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
             <!-- <li><a href="#">Profile</a></li> -->
-            <li><%= link_to "Profile", owner_path(current_owner) %></li>
+            <li><%= link_to "Profile", profile_user_path %></li>
             <!-- <li><a href="#">Log Out</a></li> -->
-            <li><%= link_to "Log Out", new_owner_session_path %></li>
+            <li><%= link_to "Log Out", destroy_owner_session_path, method: :delete %></li>
           </ul>
         </div>
       <% else %>
