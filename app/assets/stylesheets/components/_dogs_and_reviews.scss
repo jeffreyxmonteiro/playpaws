@@ -1,0 +1,10 @@
+.container-dogs-reviews {
+  display: flex; /* or inline-flex */
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+}
