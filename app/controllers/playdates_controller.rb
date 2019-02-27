@@ -21,6 +21,7 @@ class PlaydatesController < ApplicationController
     @playdate = Playdate.new(playdate_params)
     @playdate.user = current_user
     @playdate.dog = @dog
+    authorize(@playdate)
     if @playdate.save
       # remove available dates, move this to confirmation page when complete
       @dog.available_dates.delete(@playdate.date)
