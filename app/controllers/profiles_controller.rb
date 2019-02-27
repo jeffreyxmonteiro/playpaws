@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   def show
     @current_user = current_user
     @dogs = current_user.dogs if current_user.class == Owner
+    @users = User.all
   end
 
   def edit
