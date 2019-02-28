@@ -5,13 +5,14 @@ Dog Create Page
 <%= f.input :description %>
 <%= f.input :breed %>
 <%= f.input :image  %>
+<%= f.input :hourly_price %>
 <%= f.submit "Preview", formaction: owner_preview_dog_path %>
 <% unless @dog.image.nil? %>
   <div id="rounded-border">
     <%= image_tag @dog.image, width: 300 %>
   <div class="card-content">
 <% end %>
-<p>Available PlayDate</p>
+<h4>Available Time</h4>
 <%= f.input :date %>
 <%= f.input :time %>
 <%= f.submit %>
