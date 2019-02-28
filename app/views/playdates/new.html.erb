@@ -9,31 +9,14 @@
         <p class="playdate-less-margin"><%= @dog.breed %></p>
         <p><%= @dog.description %></p>
       </div>
-      <div class="playdate-card-owner playdate-center-cropped" style="background-image: url(<%= @dog.owner.avatar_url %>);">
-        <p class="playdate-owner-rtg">rating: 4.5</p>
-      </div>
+
     </div>
-    <div class="playdate-rules">
-      <h2 class="playdate-border-bottom">Doghouse Rules</h2>
-      <ul>
-        <li>Takeshi prefers cash</li>
-        <li>He normally chooses to meet at the park</li>
-      </ul>
-    </div>
+
   </div>
 
 
   <div class="right-side">
-    <div class="playdate-col-lg-4 playdate-form-col">
-      <h3 class="text-center">Book Playdate</h3>
-      <%= simple_form_for [@dog, @playdate] do |f|%>
-      <%= f.input :date, as: :select, collection: @dog.available_dates, prompt: 'Select Date' %>
-      <%= f.input :payment, as: :select, collection: ['cash', 'credit card'] ,prompt: 'Select Payment Method' %>
-      <div>
-        <%= link_to f.submit, profile_user_path %>
-      </div>
-      <% end %>
-    </div>
+
   </div>
 </div>
 
