@@ -14,7 +14,8 @@ class DogPolicy < ApplicationPolicy
   end
 
   def create?
-    @user.is_a? Owner
+    # @user.is_a? Owner
+    true
   end
 
   def update?
