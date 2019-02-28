@@ -1,0 +1,52 @@
+.dog-btn {
+  background: #B19267;
+  border-radius: 50px;
+  width: 120px;
+  font-weight: bold;
+  margin: auto;
+}
+
+
+.dog-btn a {
+  color: white;
+}
+
+.dog-btn input {
+  background: pink;
+  background: #B19267;
+  border-radius: 50px;
+  font-weight: bold;
+  margin: auto;
+  color: white;
+  padding: 5px 20px;
+  border: none;
+}
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: auto;
+  width: 40vw;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
