@@ -22,7 +22,8 @@
   border: none;
 }
 
-.card-category {
+.card-category-monkeys {
+  padding-top: 15px;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -38,15 +39,20 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.form-container {
+.form-container-monkeys {
+  padding-top: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
 
-.center-button-container {
+.center-button-container-monkeys {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.inline-items-monkeys {
+  display: flex;
 }
