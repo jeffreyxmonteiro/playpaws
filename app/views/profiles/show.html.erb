@@ -1,13 +1,13 @@
 
-<div class="card-category" style="background-image: linear-gradient(rgba(18, 97, 243, 0.3), rgba(32, 34, 62, 0.52)), url(http://i.imgur.com/SHfD9qZ.jpg)">
+<div class="card-category" style="background-image: linear-gradient(rgba(255, 255, 255, .95), rgba(255, 255, 255, 0.9)), url('<%= image_path 'user_banner_tile.jpg' %>')">
   <img class="avatar-large" alt="avatar-large" src=<%= current_user.avatar_url %> />
-  <h1><%= "Howdy, I'm #{current_user.first_name} #{current_user.last_name}!" %></h1>
+  <h2><%= "#{current_user.first_name} #{current_user.last_name}" %></h2>
   <% if current_user.class == "Owner" %>
-    <h3> <%= current_user.location  %> </h3>
+    <p><%= current_user.location  %></p>
    <% end %>
-  <h4>Fun Fact: <%= current_user.description %></h4>
+  <p>Woof woof! <%= current_user.description %></p>
   <div class="dog-btn">
-        <%= link_to "DOGS", dogs_path %> <!-- please edit this path -->
+        <%= link_to "BROWSE DOGS", dogs_path %> <!-- please edit this path -->
 </div>
 </div>
 
@@ -19,32 +19,32 @@
 
   <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Future Playdates</a></li>
-          <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Completed Playdates</a></li>
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" class="gray">Upcoming</a></li>
+          <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="gray">Completed</a></li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="home">
             <% future_playdates = current_user.playdates.select {|playdate| playdate.completed == false} %>
-            <% future_playdates.each do |playdate|  %>
+            <% future_playdates.sort_by { |obj| obj.date}.each do |playdate|  %>
               <div class="card-product">
-                <img src=<%="#{playdate.dog.images_url[0]}"%>>
+                <img src=<%="#{playdate.dog.images_url[0]}"%>, class="img-rounded image-spaced">
                 <div class="card-product-infos">
-                  <h2> <%= playdate.date %> </h2>
-                  <p>Get ready to shake paws with <strong><%= playdate.dog.name %>!</strong></p>
+                  <h2><%= playdate.dog.name %></h2>
+                  <p><%= (playdate.date.to_date - Date.today).to_i %> days until playdate</p>
                 </div>
               </div>
-            <% end  %>
+            <% end %>
           </div>
           <div role="tabpanel" class="tab-pane" id="profile">
             <% completed_playdates = current_user.playdates.select {|playdate| playdate.completed == true} %>
-            <% completed_playdates.each do |playdate|  %>
+            <% completed_playdates.sort_by { |obj| obj.date}.each do |playdate|  %>
               <div class="card-product">
                 <img src=<%="#{playdate.dog.images_url[0]}"%>>
                 <div class="card-product-infos">
-                  <h2> <%= playdate.date %> </h2>
-                  <p>You had a PAWESOME dog date with <strong><%= playdate.dog.name %>!</strong></p>
+                  <h2><%= playdate.dog.name %></h2>
+                  <p><%= (playdate.date.to_date - Date.today).to_i %> days ago</p>
                 </div>
               </div>
             <% end  %>
@@ -58,48 +58,34 @@
           future_playdates = current_user.playdates.select {|playdate| playdate.completed == false}
  -->
       <div class="item">
-        <ul class="list-inline tabs-underlined">
-          <li>
-            <a href="#" class="tab-underlined active">What Dog Owners Have Said About You...</a>
-          </li>
-          <li>
-            <a href="#" class="tab-underlined">What You Said About Poppies..</a>
-          </li>
-        </ul>
-        <div class="notification">
-          <img src='https://avatars3.githubusercontent.com/u/41468166?v=4' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>Francis Abadmothafucka</small></p>
-            <p>Da dogs were <strong>top notch!</strong> Highly recommend!</p>
-          </div>
-        </div>
+            <h4>Reviews from Dog Owners</h2>
 
         <div class="notification">
-          <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/u2dm7fdnmlkdzn8vgjxk.jpg' class="avatar-large"/>
+          <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/u2dm7fdnmlkdzn8vgjxk.jpg' class="avatar"/>
           <div class="notification-content">
             <p><small>David Younibrow</small></p>
-            <p>I was so depressed with my accounting job. But now I see the <strong>light</strong> thanks to this puppy.</p>
+            <p>After seeing my pup she could now see the <strong>light</strong>.</p>
           </div>
         </div>
 
         <div class="notification">
-          <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/wzq20vmxjrjfpjlsvlnl.jpg' class="avatar-large"/>
+          <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/wzq20vmxjrjfpjlsvlnl.jpg' class="avatar"/>
           <div class="notification-content">
             <p><small>Yuki Morimoneymoproblems</small></p>
-            <p>Playing with dogs made me a better drinker of <strong>ALCOHOL!</strong></p>
+            <p>Playing with dogs made her a better drinker of <strong>ALCOHOL!</strong></p>
           </div>
         </div>
 
         <div class="notification">
-          <img src='https://avatars3.githubusercontent.com/u/45553221?v=4' class="avatar-large"/>
+          <img src='https://avatars3.githubusercontent.com/u/45553221?v=4' class="avatar"/>
           <div class="notification-content">
             <p><small>Kumi Takenonofyobullshit</small></p>
-            <p>My pawpal <strong>cured</strong> me of my cold!</p>
+            <p>My pawpal <strong>cured</strong> her of her cold!</p>
           </div>
         </div>
 
-        <div class="notification">
-          <img src='https://avatars3.githubusercontent.com/u/43575552?v=4' class="avatar-large"/>
+       <!--  <div class="notification">
+          <img src='https://avatars3.githubusercontent.com/u/43575552?v=4' class="avatar"/>
           <div class="notification-content">
             <p><small>Jack Youdawuersch</small></p>
             <p>Ello mates - back in aussie land we had spiders as pets - now I have <strong>man's best friend!</strong></p>
@@ -107,29 +93,12 @@
         </div>
 
         <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>David Younibrow</small></p>
-            <p>I was so depressed with my accounting job. But now I see the <strong>light</strong> thanks to this puppy.</p>
-          </div>
-        </div>
-
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
+          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
           <div class="notification-content">
             <p><small>Bob Simmons</small></p>
             <p>Da dogs were <strong>top notch!</strong> Highly recommend!</p>
           </div>
-        </div>
-
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>David Younibrow</small></p>
-            <p>I was so depressed with my accounting job. But now I see the <strong>light</strong> thanks to this puppy.</p>
-          </div>
-        </div>
-      </div>
+        </div> -->
 
     </div>
   <% end %>
@@ -139,21 +108,36 @@
 
       <div class="item">
         <h3>Dogs</h3>
-
-        <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
-          <div class="card-product-infos">
-            <h2>Product name</h2>
-            <p>Product description with <strong>relevant info</strong> only.</p>
+        <% current_owner.dogs.each do |dog| %>
+          <div class="card-product">
+            <img src=<%="#{dog.images_url[0]}"%>>
+            <div class="card-product-infos">
+              <h2><%= dog.name %></h2>
+              <p><%= dog.description %></p>
+            </div>
+            <%= link_to 'edit', edit_dog_path(dog) %>
+            <%= link_to 'delete', dog_path(dog), method: :delete %>
+            <div>
+              <p>available dates</p>
+              <% dog.available_dates.each do |date| %>
+                <%= date %>
+              <% end %>
+              <h6>Add New</h6>
+              <%= simple_form_for [dog] do |f|%>
+                <%= f.input :date %>
+                <%= f.input :time %>
+                <%= f.submit %>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
 
       </div>
 
-      <div class="item">
+      <!-- <div class="item">
         <h3>Reviews</h3>
         <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
+          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
           <div class="notification-content">
             <p><small>Bob Simmons</small></p>
             <p>Da dogs were <strong>top notch!</strong> Highly recommend!</p>
@@ -163,13 +147,13 @@
         </div>
 
         <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
+          <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar"/>
           <div class="notification-content">
             <p><small>David Younibrow</small></p>
             <p>I was so depressed with my accounting job. But now I see the <strong>light</strong> thanks to this puppy.</p>
           </div>
+        </div> -->
 
-        </div>
       </div>
 
     </div>

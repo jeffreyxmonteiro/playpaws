@@ -4,7 +4,7 @@
   height: 800px;
   margin: 0px 0px;
   width: 100vw;
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 .cards {
@@ -107,9 +107,11 @@ p {
 .dog-btn {
   background: #B19267;
   border-radius: 50px;
-  width: 120px;
+  width: 170px;
   font-weight: bold;
-  margin: auto;
+  margin: 20px auto;
+  font-size: 14px;
+  padding: 5px 0px;
 }
 
 
@@ -133,6 +135,10 @@ p {
 }
 
 .gray {
+  color: #D8D8D8;
+}
+
+a:hover .gray {
   color: #D8D8D8;
 }
 

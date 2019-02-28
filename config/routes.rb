@@ -1,8 +1,25 @@
 Rails.application.routes.draw do
   devise_for :owners
   devise_for :users
-  root to: 'pages#home'
-  resources :dogs, only: [:index, :show, :edit, :update, :delete] do
+
+
+  authenticated :user do
+  root to: "dogs#index"
+  end
+
+  authenticated :owner do
+  root to: "dogs#index"
+  end
+
+  unauthenticated :user do
+  root "pages#home"
+  end
+
+  unauthenticated :owner do
+  root "pages#home"
+  end
+
+  resources :dogs, only: [:index, :show, :edit, :update, :destroy] do
     resources :playdates, only: [:new, :create]
   end
   resources :users, only: [:show]
@@ -12,5 +29,5 @@ Rails.application.routes.draw do
   end
   resource :profile, only: [:edit, :update]
   get 'profile', to: 'profiles#show', as: :profile_user
-  resources :playdates, only: [:index, :show]
+  resources :playdates, only: [:index, :show, :update, :destroy]
 end
