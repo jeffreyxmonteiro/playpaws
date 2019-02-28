@@ -5,14 +5,16 @@
   </a>
   <!-- Right Navigation -->
   <div class="navbar-right hidden-xs hidden-sm">
-    <!-- <a href="" class="navbar-item navbar-link">Messages</a> -->
+    <%= link_to dogs_path do %>
+      <span>Browse<i class="fas fa-paw"></i></span>
+    <% end %>
     <!-- <a href="#" class="navbar-btn btn-medium">Browse</a> -->
     <!-- Profile picture with dropdown list -->
     <div class="navbar-item">
       <% if user_signed_in? || owner_signed_in? %>
         <div class="dropdown">
           <div class="avatar dropdown-toggle" id="navbar-menu" data-toggle="dropdown">
-            <%#= image_tag(current_user.avatar_url) if owner_signed_in? %>
+            <%#= image_tag(current_owner.avatar_url) if owner_signed_in? %>
             <%= image_tag(current_user.avatar_url) if user_signed_in? %>
           </div>
           <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
