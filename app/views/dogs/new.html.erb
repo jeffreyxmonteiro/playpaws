@@ -1,18 +1,32 @@
-Dog Create Page
+<div class="form-container">
+  <div class="card-category">
+    <h1>Add a Poppy</h1>
 
-<%= simple_form_for [@owner, @dog] do |f|%>
-<%= f.input :name %>
-<%= f.input :description %>
-<%= f.input :breed %>
-<%= f.input :image  %>
-<%= f.submit "Preview", formaction: owner_preview_dog_path %>
-<% unless @dog.image.nil? %>
-  <div id="rounded-border">
-    <%= image_tag @dog.image, width: 300 %>
-  <div class="card-content">
-<% end %>
-<p>Available PlayDate</p>
-<%= f.input :date %>
-<%= f.input :time %>
-<%= f.submit %>
-<% end %>
+    <%= simple_form_for [@owner, @dog] do |f|%>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :breed %>
+    <%= f.input :image  %>
+    <div class="center-button-container">
+      <%= f.button :submit, "Preview", formaction: owner_preview_dog_path, class: "dog-btn" %>
+    </div>
+    <% unless @dog.image.nil? %>
+      <div id="rounded-border">
+        <%= image_tag @dog.image, width: 300 %>
+      <div class="card-content">
+    <% end %>
+    <h3>Available Playdate</h3>
+    <%= f.input :date %>
+    <h3>Available Time</h3>
+    <%= f.input :time %>
+    <div class="center-button-container">
+      <%= f.button :submit, "Add", class: "dog-btn" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
