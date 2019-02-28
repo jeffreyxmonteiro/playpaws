@@ -23,6 +23,7 @@
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 /* Right section */
@@ -33,7 +34,20 @@
   position: absolute;
   right: 9px;
 }
-
+.navbar-right a {
+  color: black;
+  text-decoration: none;
+  margin-right: 10px;
+}
+.navbar-right a:hover {
+  opacity: 0.6;
+}
+.navbar-right a > span > .fa-paw {
+  margin-left: 5px;
+}
+.navbar-right a > span {
+  font-size: 20px;
+}
 /* Basic navbar item */
 .navbar-item {
   cursor: pointer;
