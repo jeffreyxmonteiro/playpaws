@@ -31,6 +31,18 @@ class PlaydatesController < ApplicationController
     end
   end
 
+  def update
+    @playdates = Playdate.find(params[:id])
+    @playdates.completed = true
+    redirect_to profile_user_path
+  end
+
+  def delete
+    @playdates = Playdate.find(params[:id])
+    @playdates.destroy
+    redirect_to profile_user_path
+  end
+
   private
 
   def playdate_params
