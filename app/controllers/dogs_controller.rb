@@ -21,12 +21,7 @@ class DogsController < ApplicationController
   end
 
   def preview
-    @owner = Owner.find(params[:owner_id])
     @dog = Dog.new(dog_params)
-    @dog.owner = @owner
-    images = []
-    images << dog_params[:images_url]
-    @dog.images_url = images
     render :new
     skip_authorization
   end
@@ -35,9 +30,8 @@ class DogsController < ApplicationController
     @owner = Owner.find(params[:owner_id])
     @dog = Dog.new(dog_params)
     @dog.owner = @owner
-    images = []
-    images << dog_params[:images_url]
-    @dog.images_url = images
+    @dog.images_url << dog_params[:image]
+    @dog.available_dates << "#{dog_params["time(1i)"]}/#{dog_params["time(2i)"]}/#{dog_params["time(3i)"]} at #{dog_params["time(4i)"]}:#{dog_params["time(3i)"]}"
     authorize(@dog)
     if @dog.save
       redirect_to dog_path(@dog)
@@ -68,6 +62,6 @@ class DogsController < ApplicationController
   end
 
   def dog_params
-    params.require(:dog).permit(:name, :description, :breed, :images_url, :available_dates)
+    params.require(:dog).permit(:name, :description, :breed, :image, :time, :date)
   end
 end
