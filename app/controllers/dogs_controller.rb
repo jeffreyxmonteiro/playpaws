@@ -49,7 +49,7 @@ class DogsController < ApplicationController
     @dog.available_dates << make_date_time unless dog_params["time(1i)"].nil?
     authorize(@dog)
     if @dog.update(dog_params)
-      redirect_to dog_path(@dog)
+      redirect_to profile_user_path
     else
       render :edit
     end
