@@ -1,6 +1,6 @@
 class DogsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :edit, :new, :create, :preview, :update]
-  before_action :set_dog, only: [:show, :edit, :update, :delete]
+  skip_before_action :authenticate_user!, only: [:index, :show, :edit, :new, :create, :preview, :update, :destroy]
+  before_action :set_dog, only: [:show, :edit, :update, :destroy]
 
   def index
     # @dogs = Dog.all
@@ -58,6 +58,7 @@ class DogsController < ApplicationController
   def destroy
     authorize(@dog)
     @dog.destroy
+    redirect_to profile_path
   end
 
   private

@@ -115,6 +115,20 @@
               <h2><%= dog.name %></h2>
               <p><%= dog.description %></p>
             </div>
+            <%= link_to 'edit', edit_dog_path(dog) %>
+            <%= link_to 'delete', dog_path(dog), method: :delete %>
+            <div>
+              <p>available dates</p>
+              <% dog.available_dates.each do |date| %>
+                <%= date %>
+              <% end %>
+              <h6>Add New</h6>
+              <%= simple_form_for [dog] do |f|%>
+                <%= f.input :date %>
+                <%= f.input :time %>
+                <%= f.submit %>
+              <% end %>
+            </div>
           </div>
         <% end %>
 

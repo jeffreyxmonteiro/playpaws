@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   root "pages#home"
   end
 
-  resources :dogs, only: [:index, :show, :edit, :update, :delete] do
+  resources :dogs, only: [:index, :show, :edit, :update, :destroy] do
     resources :playdates, only: [:new, :create]
   end
   resources :users, only: [:show]
@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   end
   resource :profile, only: [:edit, :update]
   get 'profile', to: 'profiles#show', as: :profile_user
-  resources :playdates, only: [:index, :show, :update, :delete]
+  resources :playdates, only: [:index, :show, :update, :destroy]
 end
