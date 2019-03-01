@@ -93,11 +93,19 @@
             <ul>
               <% dog.available_dates.each do |date| %>
               <li><%= date %></li>
-              <% end %>
+            <% end %>
             </ul>
             <%= simple_form_for [dog] do |f| %>
-            <%= f.input :date %>
-            <%= f.input :time %>
+            <div class="inline-items-monkeys">
+            <%= f.input :date, as: :string, placeholder: "Select date", label: false, input_html: {class: "datepicker"}%>
+            </div>
+            <h5 class="form-font-monkeys">Add Available Time</h5>
+            <div class="inline-items-monkeys">
+               <%= f.input :time, label: false, as: :string, placeholder: "Select time",input_html: {class: "timepicker"} %>
+            </div>
+            <div class="center-button-container-monkeys">
+              <%= f.button :submit, "Add", class: "dog-btn" %>
+            </div>
             <%= f.submit %>
             <% end %>
           </div>
@@ -126,20 +134,6 @@
               <p>My pawpal <strong>cured</strong> her of her cold!</p>
             </div>
           </div>
-          <!--  <div class="notification">
-            <img src='https://avatars3.githubusercontent.com/u/43575552?v=4' class="avatar"/>
-            <div class="notification-content">
-              <p><small>Jack Youdawuersch</small></p>
-              <p>Ello mates - back in aussie land we had spiders as pets - now I have <strong>man's best friend!</strong></p>
-            </div>
-          </div>
-          <div class="notification">
-            <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
-            <div class="notification-content">
-              <p><small>Bob Simmons</small></p>
-              <p>Da dogs were <strong>top notch!</strong> Highly recommend!</p>
-            </div>
-          </div> -->
         </div>
         <% end %>
       </div>
