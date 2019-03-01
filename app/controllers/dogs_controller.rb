@@ -21,6 +21,7 @@ class DogsController < ApplicationController
   end
 
   def preview
+    @owner = Owner.find(params[:owner_id])
     @dog = Dog.new(dog_params)
     render :new
     skip_authorization
