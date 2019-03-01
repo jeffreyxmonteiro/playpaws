@@ -18,12 +18,7 @@ DOGIMAGES = [
             "https://images.pexels.com/photos/1124002/pexels-photo-1124002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             ]
 
-puts "Creating seeds...."
-
-50.times do
-  Owner.create!(
-    username: "#{Faker::Name.first_name}#{rand(1000)}",
-    avatar_url: [
+AVATARIMAGES = [
                 "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                 "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                 "https://images.pexels.com/photos/769772/pexels-photo-769772.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -35,20 +30,9 @@ puts "Creating seeds...."
                 "https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                 "https://images.pexels.com/photos/775358/pexels-photo-775358.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                 "https://images.pexels.com/photos/227294/pexels-photo-227294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                ].sample,
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    description: "I love #{Faker::Creature::Dog.breed}.",
-    location: Faker::Address.city,
-    email: Faker::Internet.email,
-    password: "ownersecret"
-    )
-end
+                ]
 
-50.times do
-  User.create!(
-    username: Faker::Name.first_name,
-    avatar_url: [
+USERIMAGES = [
               "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
               "https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
               "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -60,7 +44,48 @@ end
               "https://images.pexels.com/photos/1722198/pexels-photo-1722198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
               "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
               "https://images.pexels.com/photos/1001180/pexels-photo-1001180.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-              ].sample,
+              ]
+
+puts "Creating seeds...."
+
+Owner.create!(
+  username: "DavidadisMontieroAbad",
+  avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/viqfqp0tfkmcwmj7cfwe.jpg",
+  first_name: "Daviadis",
+  last_name: "Abadontiero",
+  description: "I love #{Faker::Creature::Dog.breed}.",
+  location: Faker::Address.city,
+  email: "captainasia@gmail.com",
+  password: "ownersecret"
+  )
+
+50.times do
+  Owner.create!(
+    username: "#{Faker::Name.first_name}#{rand(1000)}",
+    avatar_url: AVATARIMAGES.sample,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    description: "I love #{Faker::Creature::Dog.breed}.",
+    location: Faker::Address.city,
+    email: Faker::Internet.email,
+    password: "ownersecret"
+    )
+end
+
+User.create!(
+  username: "DogLover101",
+  avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/cq5zoucfrobsomypnwzy.jpg",
+  first_name: "Jeffrancis",
+  last_name: "Puangyoun",
+  description: "I love dogs and coding.",
+  email: "captainjeffrancis@gmail.com",
+  password: "usersecret"
+  )
+
+50.times do
+  User.create!(
+    username: Faker::Name.first_name,
+    avatar_url: USERIMAGES.sample,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: "I love #{Faker::Creature::Dog.breed}.",
@@ -69,16 +94,20 @@ end
     )
 end
 
+dog_counter = 0
+
 Owner.all.each do |owner|
   3.times do
     Dog.create!(
       name: Faker::Creature::Dog.name,
-      description: "#{Faker::Creature::Dog.size} #{Faker::Creature::Dog.gender} #{Faker::Creature::Dog.age}, #{Faker::Creature::Dog.sound}",
+      description: "#{Faker::Creature::Dog.size} #{Faker::Creature::Dog.age}, #{Faker::Creature::Dog.sound}",
       owner_id: owner.id,
       breed: Faker::Creature::Dog.breed,
-      available_dates: [Faker::Date.forward(365), Faker::Date.forward(365), Faker::Date.forward(365)],
-      images_url: DOGIMAGES.sample(3)
+      available_dates: ["#{(dog_counter % 30) + 1}/3/2019 at 10:00"],
+      images_url: DOGIMAGES.sample(3),
+      hourly_price: rand(100)
     )
+    dog_counter += 1
   end
 end
 
@@ -88,7 +117,7 @@ Dog.all.each do |dog|
       user_id: User.all.sample.id,
       dog_id: dog.id,
       date: dog.available_dates.sample,
-      payment: ["cash", "credit"].sample,
+      payment: ["cash", "credit card"].sample,
       completed: [true, false].sample
       )
   end
