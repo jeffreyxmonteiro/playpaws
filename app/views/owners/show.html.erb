@@ -1,8 +1,8 @@
-<div class="card-category" style="background-image: linear-gradient(rgba(18, 97, 243, 0.3), rgba(32, 34, 62, 0.52)), url(http://i.imgur.com/SHfD9qZ.jpg)">
+<div class="card-category" style="background-image: linear-gradient(rgba(255, 255, 255, .85), rgba(255, 255, 255, 0.8)), url('<%= image_path 'owner_banner_tile.jpg' %>')">
   <img class="avatar-large" alt="avatar-large" src=<%= @owner.avatar_url %> />
-  <h1><%= "Howdy, I'm #{@owner.first_name} #{@owner.last_name}!" %></h1>
-  <h4> <%= @owner.location  %> </h4>
-  <h4>Fun Fact: <%= @owner.description %></h4>
+  <h2><%= "#{@owner.first_name} #{@owner.last_name}" %></h2>
+  <h4> <%= @owner.location  %> 🏠</h4>
+  <p>Bark bark! <%= @owner.description %></p>
 </div>
 
 <% if current_user %>
@@ -13,7 +13,7 @@
 
   <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><%= "#{@owner.first_name} #{@owner.last_name}'s POPPIES" %></a></li>
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><%= "Your Dogs" %></a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -38,13 +38,9 @@
           future_playdates = current_user.playdates.select {|playdate| playdate.completed == false}
  -->
       <div class="item">
-        <ul class="list-inline tabs-underlined">
-          <li>
-            <a href="#" class="tab-underlined active">What people say about...</a>
-          </li>
-        </ul>
+        <h4>Reviews from Dog Lovers</h4>
         <div class="notification">
-          <img src='https://avatars3.githubusercontent.com/u/41468166?v=4' class="avatar-large"/>
+          <img src='https://avatars3.githubusercontent.com/u/41468166?v=4' class="avatar"/>
           <div class="notification-content">
             <p><small>Francis Abadmothafucka</small></p>
             <p>Da dogs were <strong>top notch!</strong> Highly recommend!</p>
@@ -52,7 +48,7 @@
         </div>
 
         <div class="notification">
-          <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/u2dm7fdnmlkdzn8vgjxk.jpg' class="avatar-large"/>
+          <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/u2dm7fdnmlkdzn8vgjxk.jpg' class="avatar"/>
           <div class="notification-content">
             <p><small>David Younibrow</small></p>
             <p>I was so depressed with my accounting job. But now I see the <strong>light</strong> thanks to this puppy.</p>
@@ -60,7 +56,7 @@
         </div>
 
         <div class="notification">
-          <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/wzq20vmxjrjfpjlsvlnl.jpg' class="avatar-large"/>
+          <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/wzq20vmxjrjfpjlsvlnl.jpg' class="avatar"/>
           <div class="notification-content">
             <p><small>Yuki Morimoneymoproblems</small></p>
             <p>Playing with dogs made me a better drinker of <strong>ALCOHOL!</strong></p>
@@ -68,7 +64,7 @@
         </div>
 
         <div class="notification">
-          <img src='https://avatars3.githubusercontent.com/u/45553221?v=4' class="avatar-large"/>
+          <img src='https://avatars3.githubusercontent.com/u/45553221?v=4' class="avatar"/>
           <div class="notification-content">
             <p><small>Kumi Takenonofyobullshit</small></p>
             <p>My pawpal <strong>cured</strong> me of my cold!</p>
@@ -76,7 +72,7 @@
         </div>
 
         <div class="notification">
-          <img src='https://avatars3.githubusercontent.com/u/43575552?v=4' class="avatar-large"/>
+          <img src='https://avatars3.githubusercontent.com/u/43575552?v=4' class="avatar"/>
           <div class="notification-content">
             <p><small>Jack Youdawuersch</small></p>
             <p>Ello mates - back in aussie land we had spiders as pets - now I have <strong>man's best friend!</strong></p>
@@ -84,28 +80,13 @@
         </div>
 
         <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>David Younibrow</small></p>
-            <p>I was so depressed with my accounting job. But now I see the <strong>light</strong> thanks to this puppy.</p>
-          </div>
-        </div>
-
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
+          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
           <div class="notification-content">
             <p><small>Bob Simmons</small></p>
             <p>Da dogs were <strong>top notch!</strong> Highly recommend!</p>
           </div>
         </div>
 
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>David Younibrow</small></p>
-            <p>I was so depressed with my accounting job. But now I see the <strong>light</strong> thanks to this puppy.</p>
-          </div>
-        </div>
       </div>
 
     </div>
@@ -136,15 +117,6 @@
             <p>Da dogs were <strong>top notch!</strong> Highly recommend!</p>
           </div>
 
-
-        </div>
-
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>David Younibrow</small></p>
-            <p>I was so depressed with my accounting job. But now I see the <strong>light</strong> thanks to this puppy.</p>
-          </div>
 
         </div>
       </div>
