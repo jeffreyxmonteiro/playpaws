@@ -23,12 +23,13 @@
 }
 
 .card-category-monkeys {
+  border: 1px solid #B19267;
   padding-top: 15px;
   background-size: cover;
   background-position: center;
   display: flex;
   height: auto;
-  width: 40vw;
+  width: 50vw;
   justify-content: center;
   align-items: center;
   color: white;
@@ -53,6 +54,31 @@
   align-items: center;
 }
 
-.inline-items-monkeys {
+// .inline-items-monkeys {
+//   display: flex;
+// }
+
+.date.form-control{
+display: inline-block;
+width: 32%;
+margin-right: 5px;
+}
+
+.form-font-monkeys {
+    font-family: "Montserrat", "Helvetica", "sans-serif";
+    color: #333333;
+    font-weight: 700;
+}
+
+.heading-monkeys {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1px;
+}
+
+.heading-font-monkeys {
+  font-family: "Montserrat", "Helvetica", "sans-serif";
+  color: #333333;
+  font-weight: 600;
 }
