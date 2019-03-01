@@ -47,7 +47,7 @@ class DogsController < ApplicationController
 
   def update
     @dog.images_url.unshift(dog_params[:image]) unless @dog.image == dog_params[:image] || dog_params[:image].nil?
-    @dog.available_dates << make_date_time unless dog_params["time(1i)"].nil?
+    @dog.available_dates << make_date_time unless dog_params[:date].nil?
     authorize(@dog)
     if @dog.update(dog_params)
       redirect_to profile_user_path

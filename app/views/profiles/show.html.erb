@@ -93,7 +93,7 @@
             <ul>
               <% dog.available_dates.each do |date| %>
               <li><%= date %></li>
-              <% end %>
+            <% end %>
             </ul>
             <h5>Add New Date:</h5>
             <%= simple_form_for [dog] do |f| %>
@@ -127,20 +127,6 @@
               <p>My pawpal <strong>cured</strong> her of her cold!</p>
             </div>
           </div>
-          <!--  <div class="notification">
-            <img src='https://avatars3.githubusercontent.com/u/43575552?v=4' class="avatar"/>
-            <div class="notification-content">
-              <p><small>Jack Youdawuersch</small></p>
-              <p>Ello mates - back in aussie land we had spiders as pets - now I have <strong>man's best friend!</strong></p>
-            </div>
-          </div>
-          <div class="notification">
-            <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
-            <div class="notification-content">
-              <p><small>Bob Simmons</small></p>
-              <p>Da dogs were <strong>top notch!</strong> Highly recommend!</p>
-            </div>
-          </div> -->
         </div>
         <% end %>
       </div>
