@@ -33,6 +33,16 @@
                 <div class="card-product-infos">
                   <h2><%= playdate.dog.name %></h2>
                   <p><%= (playdate.date.to_date - Date.today).to_i %> days until playdate</p>
+                  <div class="playdate-actions">
+                    <p class="mark-playdate-done-btn"><%= link_to playdate_path(playdate), data: {method: 'patch', confirm: 'Mark as completed?'} do %>
+                      <i class="fas fa-check"></i>
+                    <% end %>
+                    </p>
+                    <p class="cancel-playdate-btn"><%= link_to playdate_path(playdate), data: {method: 'delete', confirm: 'Are you sure you want to cancel this playdate?'} do %>
+                      <i class="fas fa-times"></i>
+                    <% end %>
+                    </p>
+                  </div>
                 </div>
                 <%#= link_to "", dog_path(playdate.dog), class: "dog-card-link" %>
               </div>
