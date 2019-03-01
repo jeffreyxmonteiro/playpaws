@@ -11,53 +11,81 @@
 </div>
 <% if current_user %>
 <div class="container-dogs-reviews">
-  <div class="item">
-    <div>
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" class="gray">Upcoming</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="gray">Completed</a></li>
-      </ul>
-      <!-- Tab panes -->
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="home">
-          <% future_playdates = current_user.playdates.select {|playdate| playdate.completed == false} %>
-          <% future_playdates.sort_by { |obj| obj.date}.each do |playdate|  %>
-          <div class="card-product">
-            <img src=<%="#{playdate.dog.images_url[0]}"%>, class="img-rounded image-spaced">
-            <div class="card-product-infos">
-              <h2><%= playdate.dog.name %></h2>
-              <p><%= (playdate.date.to_date - Date.today).to_i %> days until playdate</p>
-              <div class="playdate-actions">
-                <p class="mark-playdate-done-btn"><%= link_to playdate_path(playdate), data: {method: 'patch', confirm: 'Mark as completed?'} do %>
-                  <i class="fas fa-check"></i>
-                  <% end %>
-                </p>
-                <p class="cancel-playdate-btn"><%= link_to playdate_path(playdate), data: {method: 'delete', confirm: 'Are you sure you want to cancel this playdate?'} do %>
-                  <i class="fas fa-times"></i>
-                  <% end %>
-                </p>
+  <div class="flex-left-column">
+    <div class="item">
+      <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" class="gray">Upcoming</a></li>
+          <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="gray">Completed</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+            <% future_playdates = current_user.playdates.select {|playdate| playdate.completed == false} %>
+            <% future_playdates.sort_by { |obj| obj.date}.each do |playdate|  %>
+            <div class="card-product">
+              <img src=<%="#{playdate.dog.images_url[0]}"%>, class="img-rounded image-spaced">
+              <div class="card-product-infos">
+                <h2><%= playdate.dog.name %></h2>
+                <p><%= (playdate.date.to_date - Date.today).to_i %> days until playdate</p>
+                <div class="playdate-actions">
+                  <p class="mark-playdate-done-btn"><%= link_to playdate_path(playdate), data: {method: 'patch', confirm: 'Mark as completed?'} do %>
+                    <i class="fas fa-check"></i>
+                    <% end %>
+                  </p>
+                  <p class="cancel-playdate-btn"><%= link_to playdate_path(playdate), data: {method: 'delete', confirm: 'Are you sure you want to cancel this playdate?'} do %>
+                    <i class="fas fa-times"></i>
+                    <% end %>
+                  </p>
+                </div>
+              </div>
+              <%#= link_to "", dog_path(playdate.dog), class: "dog-card-link" %>
+            </div>
+            <% end %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="profile">
+            <% completed_playdates = current_user.playdates.select {|playdate| playdate.completed == true} %>
+            <% completed_playdates.sort_by { |obj| obj.date}.each do |playdate|  %>
+            <div class="card-product">
+              <img src=<%="#{playdate.dog.images_url[0]}"%>>
+              <div class="card-product-infos">
+                <h2><%= playdate.dog.name %></h2>
+                <p><%= (playdate.date.to_date - Date.today).to_i %> days ago</p>
               </div>
             </div>
-            <%#= link_to "", dog_path(playdate.dog), class: "dog-card-link" %>
+            <% end  %>
           </div>
-          <% end %>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="profile">
-          <% completed_playdates = current_user.playdates.select {|playdate| playdate.completed == true} %>
-          <% completed_playdates.sort_by { |obj| obj.date}.each do |playdate|  %>
-          <div class="card-product">
-            <img src=<%="#{playdate.dog.images_url[0]}"%>>
-            <div class="card-product-infos">
-              <h2><%= playdate.dog.name %></h2>
-              <p><%= (playdate.date.to_date - Date.today).to_i %> days ago</p>
-            </div>
-          </div>
-          <% end  %>
         </div>
       </div>
     </div>
-  </div>
+
+    <div class="item">
+            <h4>Reviews from Dog Owners</h4>
+            <div class="notification">
+              <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/u2dm7fdnmlkdzn8vgjxk.jpg' class="avatar"/>
+              <div class="notification-content">
+                <p><small>David Younibrow</small></p>
+                <p>After seeing my pup she could now see the <strong>light</strong>.</p>
+              </div>
+            </div>
+            <div class="notification">
+              <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/wzq20vmxjrjfpjlsvlnl.jpg' class="avatar"/>
+              <div class="notification-content">
+                <p><small>Yuki Morimoneymoproblems</small></p>
+                <p>Playing with dogs made her a better drinker of <strong>ALCOHOL!</strong></p>
+              </div>
+            </div>
+            <div class="notification">
+              <img src='https://avatars3.githubusercontent.com/u/45553221?v=4' class="avatar"/>
+              <div class="notification-content">
+                <p><small>Kumi Takenonofyobullshit</small></p>
+                <p>My pawpal <strong>cured</strong> her of her cold!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
   <% end %>
   <!--      completed_playdates = current_user.playdates.select {|playdate| playdate.completed == true}
   future_playdates = current_user.playdates.select {|playdate| playdate.completed == false}
@@ -67,7 +95,14 @@
     <div>
       <div>
         <div class="item">
-          <h4>Your Dogs  <%= link_to 'Add Dog', new_owner_dog_path(current_owner) %></h4>
+          <div class="flex-space-between-monkey">
+            <div>
+              <h4>Your Dogs</h4>
+            </div>
+            <div>
+              <%= link_to 'Add Dog', new_owner_dog_path(current_owner), class: :btn %>
+            </div>
+          </div>
           <% current_owner.dogs.each do |dog| %>
           <div class="card-product notification dashboard">
             <div>
@@ -75,6 +110,7 @@
               <div class="card-product-infos">
                 <h2><%= dog.name %></h2>
                 <p><%= dog.description %></p>
+                <p><%= "Hourly Rate: #{dog.hourly_price}" %></p>
               </div>
             </div>
             <div>
@@ -99,34 +135,10 @@
             <%= simple_form_for [dog] do |f| %>
             <%= f.input :date,  as: :string, placeholder: "Select date", input_html: {class: "datepicker"}%>
             <%= f.input :time, as: :string, placeholder: "Select time",input_html: {class: "timepicker"} %>
-            <%= f.button :submit, "Add" %>
+            <%= f.button :submit, "Add Date" %>
             <% end %>
           </div>
         </div>
         <% end %>
-        <div class="item">
-          <h4>Reviews from Dog Owners</h4>
-          <div class="notification">
-            <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/u2dm7fdnmlkdzn8vgjxk.jpg' class="avatar"/>
-            <div class="notification-content">
-              <p><small>David Younibrow</small></p>
-              <p>After seeing my pup she could now see the <strong>light</strong>.</p>
-            </div>
-          </div>
-          <div class="notification">
-            <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/wzq20vmxjrjfpjlsvlnl.jpg' class="avatar"/>
-            <div class="notification-content">
-              <p><small>Yuki Morimoneymoproblems</small></p>
-              <p>Playing with dogs made her a better drinker of <strong>ALCOHOL!</strong></p>
-            </div>
-          </div>
-          <div class="notification">
-            <img src='https://avatars3.githubusercontent.com/u/45553221?v=4' class="avatar"/>
-            <div class="notification-content">
-              <p><small>Kumi Takenonofyobullshit</small></p>
-              <p>My pawpal <strong>cured</strong> her of her cold!</p>
-            </div>
-          </div>
-        </div>
         <% end %>
       </div>

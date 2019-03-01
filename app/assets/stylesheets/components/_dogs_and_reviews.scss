@@ -10,3 +10,14 @@
 body {
   margin: 0;
 }
+
+.flex-left-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-space-between-monkey {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+}
