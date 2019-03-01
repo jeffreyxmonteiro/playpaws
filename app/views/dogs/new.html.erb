@@ -3,10 +3,17 @@
 
 
     <%= simple_form_for [@owner, @dog] do |f|%>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :breed %>
-    <%= f.input :image  %>
+    <div class="heading-monkeys">
+      <h4 class="heading-font-monkeys">Add a new dog</h4>
+    </div>
+    <h5 class="form-font-monkeys">Name</h5>
+    <%= f.input :name, label: false %>
+    <h5 class="form-font-monkeys">Tell us about your dog!</h5>
+    <%= f.input :description, label: false %>
+    <h5 class="form-font-monkeys">What breed?</h5>
+    <%= f.input :breed, label: false %>
+    <h5 class="form-font-monkeys">Add an image url below!</h5>
+    <%= f.input :image, label: false  %>
     <div class="center-button-container-monkeys">
       <%= f.button :submit, "Preview", formaction: owner_preview_dog_path, class: "dog-btn" %>
     </div>
@@ -18,14 +25,14 @@
 
     <% end %>
 
-    <h3>Available Playdate</h3>
+    <h5 class="form-font-monkeys">Add Available Playdate</h5>
     <div class="inline-items-monkeys">
-      <%= f.input :date, label: false %>
+      <%= f.input :date, as: :string, placeholder: "Select date", label: false, input_html: {class: "datepicker"}%>
     </div>
 
-    <h3>Available Time</h3>
+    <h5 class="form-font-monkeys">Add Available Time</h5>
     <div class="inline-items-monkeys">
-       <%= f.input :time, label: false %>
+       <%= f.input :time, label: false, as: :string, placeholder: "Select time",input_html: {class: "timepicker"} %>
     </div>
 
 
@@ -37,6 +44,8 @@
 
   </div>
 </div>
+<br>
+<br>
 <!--
 
 f.input :remember_me, as: :boolean, inline_label: 'Remember me', label: false

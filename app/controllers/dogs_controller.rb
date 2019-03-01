@@ -45,7 +45,7 @@ class DogsController < ApplicationController
   end
 
   def update
-    @dog.images_url.unshift(dog_params[:image]) unless @dog.image == dog_params[:image]
+    @dog.images_url.unshift(dog_params[:image]) unless @dog.image == dog_params[:image] || dog_params[:image].nil?
     @dog.available_dates << make_date_time unless dog_params["time(1i)"].nil?
     authorize(@dog)
     if @dog.update(dog_params)
@@ -64,7 +64,7 @@ class DogsController < ApplicationController
   private
 
   def make_date_time
-    "#{dog_params["time(1i)"]}/#{dog_params["time(2i)"]}/#{dog_params["time(3i)"]} at #{dog_params["time(4i)"]}:#{dog_params["time(3i)"]}"
+    "#{dog_params["time(3i)"]}/#{dog_params["time(2i)"]}/#{dog_params["time(1i)"]} at #{dog_params["time(4i)"]}:#{dog_params["time(3i)"]}"
   end
 
   def set_dog

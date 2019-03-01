@@ -7,7 +7,7 @@ class Owner < ApplicationRecord
   # For calling owner.playdates so owner can see all their playdates
   has_many :playdates, through: :dogs
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :location, presence: true
