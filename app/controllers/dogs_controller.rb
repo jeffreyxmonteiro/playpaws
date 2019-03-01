@@ -21,6 +21,7 @@ class DogsController < ApplicationController
   end
 
   def preview
+    @owner = Owner.find(params[:owner_id])
     @dog = Dog.new(dog_params)
     render :new
     skip_authorization
@@ -32,6 +33,7 @@ class DogsController < ApplicationController
     @dog.owner = @owner
     @dog.images_url << dog_params[:image]
     @dog.available_dates << make_date_time
+    raise
     authorize(@dog)
     if @dog.save
       redirect_to dog_path(@dog)
