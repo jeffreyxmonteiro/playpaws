@@ -64,7 +64,7 @@ class DogsController < ApplicationController
   private
 
   def make_date_time
-    "#{dog_params["time(3i)"]}/#{dog_params["time(2i)"]}/#{dog_params["time(1i)"]} at #{dog_params["time(4i)"]}:#{dog_params["time(3i)"]}"
+    "#{dog_params[:date]} at #{dog_params[:time]}"
   end
 
   def set_dog
