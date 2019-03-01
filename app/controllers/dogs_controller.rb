@@ -35,7 +35,7 @@ class DogsController < ApplicationController
     @dog.available_dates << make_date_time
     authorize(@dog)
     if @dog.save
-      redirect_to dog_path(@dog)
+      redirect_to profile_user_path
     else
       render :new
     end
