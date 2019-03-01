@@ -112,7 +112,7 @@ Owner.all.each do |owner|
 end
 
 Dog.all.each do |dog|
-  5.times do
+  1.times do
     Playdate.create!(
       user_id: User.all.sample.id,
       dog_id: dog.id,

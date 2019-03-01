@@ -25,6 +25,8 @@ class PlaydatesController < ApplicationController
     if @playdate.save
       # remove available dates, move this to confirmation page when complete
       @dog.available_dates.delete(@playdate.date)
+      authorize(@dog)
+      @dog.save
       redirect_to profile_user_path
     else
       render :new
@@ -38,8 +40,8 @@ class PlaydatesController < ApplicationController
   end
 
   def delete
-    @playdates = Playdate.find(params[:id])
-    @playdates.destroy
+    @playdate = Playdate.find(params[:id])
+    @playdate.destroy
     redirect_to profile_user_path
   end
 
