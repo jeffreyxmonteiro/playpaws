@@ -1,17 +1,22 @@
-Dog Edit Page
+<div class="edit-dog-background">
+  <div class="edit-dog-form-container">
+    <h2>Edit Dog Details</h2>
 
-<%= simple_form_for [@dog] do |f|%>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :breed %>
-  <%= f.input :image %>
-  <%= f.input :hourly_price %>
-
-  <h4> Current Profile Image </h4>
-  <% unless @dog.images_url.nil? %>
-    <div id="rounded-border">
-      <%= image_tag @dog.images_url.first, width: 300 %>
-    <div class="card-content">
-  <% end %>
-  <%= f.submit %>
-<% end %>
+    <%= simple_form_for [@dog] do |f|%>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :breed %>
+      <%= f.input :image, label: 'Image URL' %>
+      <%= f.input :hourly_price, label: 'Hourly Price (¥)' %>
+    <div class="edit-dog-image-content">
+      <h4> Current Profile Image </h4>
+      <% unless @dog.images_url.nil? %>
+        <div id="dog-image">
+          <%= image_tag @dog.images_url.first %>
+        </div>
+      <% end %>
+      <%= f.submit %>
+    </div>
+    <% end %>
+  </div>
+</div>
