@@ -33,7 +33,6 @@ class DogsController < ApplicationController
     @dog.owner = @owner
     @dog.images_url << dog_params[:image]
     @dog.available_dates << make_date_time
-    raise
     authorize(@dog)
     if @dog.save
       redirect_to dog_path(@dog)
