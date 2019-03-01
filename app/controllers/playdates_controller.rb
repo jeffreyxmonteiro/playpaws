@@ -1,5 +1,5 @@
 class PlaydatesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create] #remove after confirmation
+  skip_before_action :authenticate_user!, only: [:new, :create, :update, :destroy] #remove after confirmation
 
   def index
     @current_user = current_user
@@ -34,13 +34,16 @@ class PlaydatesController < ApplicationController
   end
 
   def update
-    @playdates = Playdate.find(params[:id])
-    @playdates.completed = true
+    @playdate = Playdate.find(params[:id])
+    @playdate.completed = true
+    authorize(@playdate)
+    @playdate.save
     redirect_to profile_user_path
   end
 
-  def delete
+  def destroy
     @playdate = Playdate.find(params[:id])
+    authorize(@playdate)
     @playdate.destroy
     redirect_to profile_user_path
   end

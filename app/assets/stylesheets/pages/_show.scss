@@ -141,4 +141,22 @@ p {
 a:hover .gray {
   color: #D8D8D8;
 }
-
+.mark-playdate-done-btn {
+  margin: 20px auto;
+  padding: 5px 0px;
+}
+.mark-playdate-done-btn a {
+  font-size: 25px;
+  color: #B19267;
+}
+.cancel-playdate-btn {
+  margin: 20px auto;
+  padding: 5px 0px;
+}
+.cancel-playdate-btn a {
+  font-size: 25px;
+  color: #B19267;
+}
+.playdate-actions {
+  display: flex;
+}
